@@ -17,13 +17,11 @@ body {
     background: #f9f9f9;
 }
 
-/* === Links === */
 a {
     text-decoration: none;
     color: #7679C0;
 }
 
-/* === font === */
 h1, h2 {
     font-weight: 700;
 }
@@ -37,14 +35,43 @@ h2 {
     text-transform: uppercase;
 }
 
-.button-primary, .button-disabled, .switch-ios span span {
+P {
+    font-size: 0.875rem;
+}
+
+li {
+   font-size: 0.8125rem; 
+}
+
+/* =================================
+   Buttons
+==================================== */
+
+.button-primary,
+.button-disabled {
+    padding: 16px 12px;
+    border-radius: 5px;
+    background: #7477BF;
+    color: white;
+    border: none; 
     font-size: 1rem;
     font-weight: 400;
     text-transform: uppercase;
+    cursor: pointer; 
 }
 
-P {
-    font-size: 0.875rem;
+.button-disabled {
+    background: #999999;
+}
+
+/* =================================
+   Images & Icons
+==================================== */
+
+.switch-ios span span {
+    font-size: 1rem;
+    font-weight: 400;
+    text-transform: uppercase;
 }
 
 .social-text p {
@@ -59,15 +86,16 @@ P {
     color: #777777; 
 }
 
-li {
-   font-size: 0.8125rem; 
+.icon {
+    fill: white;
+    width: 32px;
 }
 
-
-
 /* === Images === */
+
 .profile-image,
-.member {
+.member,
+.social-image {
   border-radius: 100%;
   width: 60px;
   height: 60px;
@@ -77,32 +105,8 @@ li {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 60px; 
-    height: 60px;
-    border-radius: 100%;
     background: #7477BF;
 }
-
-.icon {
-    fill: white;
-    width: 32px;
-}
-
-/* === Buttons === */
-.button-primary, .button-disabled {
-    background: #7477BF;
-    color: white;
-    border: none; 
-    border-radius: 5px;
-    padding: 16px 12px;
-    cursor: pointer; 
-}
-
-.button-disabled {
-    background: #999999;
-}
-
-
 
 /* =================================
    Layout: Grid container
@@ -121,11 +125,11 @@ li {
 /* === header ===*/
 .header {
     grid-area: header;
-    background: #7477bf;
-    color: white;
     display: flex;
     justify-content: space-between;
     gap:16px;
+    background: #7477bf;
+    color: white;
 }
 
 .header-right {
@@ -142,10 +146,10 @@ li {
 
 .bell-icon {
     flex: 1;
-    fill: white;
     width: 22px;
     min-width: 20px;
     height: auto; 
+    fill: white;
 }
 
 .member {
@@ -157,10 +161,10 @@ li {
 
 
 .divider {
-    background: #8C8EBF;
     width: 2px;
     max-height: 38px;
     min-height: 32px;
+    background: #8C8EBF;
 }
 
 #notifications {
@@ -170,10 +174,10 @@ li {
 /* === navigation ===*/
 .navigation {
     grid-area: navigation;
-    background: #4d4c72;
     display: flex;
     justify-content: center; 
     gap: 32px;
+    background: #4d4c72;
 }
 
 .header,
@@ -192,15 +196,23 @@ li {
 /* === main ===*/
 .main {
     grid-area: main;
-    background: white;
     display: grid;
+    background: white;
 }
 
 /* =================================
    Widgets and Sections
 ==================================== */
 
-.traffic,.traffic-header, .daily, .mobile, .social, .members, .activity, .message, .settings  {
+.traffic,
+.traffic-header, 
+.daily, 
+.mobile, 
+.social, 
+.members, 
+.activity, 
+.message, 
+.settings  {
     display: flex;
     flex-direction:column;
     gap:16px;
@@ -214,8 +226,8 @@ li {
 .dashboard {
     display: flex;
     justify-content: start;
-    padding-left: 16px;
     gap: 16px;
+    padding-left: 16px;
     min-height: 50px;
 }
 
@@ -224,18 +236,18 @@ li {
     flex: 1;
     width: 100%;
     height: auto;
-    background-color: #F7F7F7;
     border-bottom: 1px #CFCFCF solid;
     border-left: 1px #CFCFCF solid;
+    background-color: #F7F7F7;
 }
 
 /* === alert === */
 .alert {
-    background: #7477BF;
-    color: #fff;
     padding: 16px 8px;
     margin: 16px;
     border-radius: 5px;
+    background: #7477BF;
+    color: #fff;
     font-size: 1rem;
 }
 
@@ -259,29 +271,32 @@ li {
 }
 
 .traffic-nav li {
-    background: #81C98F;
-    color: white;
     padding: 6px 10px;
     border-radius: 16px;
+    background: #81C98F;
+    color: white;
 }
 
 /* === Social section === */
+
 .social-container {
     display: flex;
+    flex: 1;
     align-items: center;
     gap: 16px;
     padding: 12px 16px;
-    background: #F5F5F5;
-    border: 2px #CFCFCF solid;
     border-radius: 5px;
+    border: 1px #CFCFCF solid;
+    background: #F5F5F5;
 }
 
 /* === Members and Recent Activity === */
-.members, .activity {
+.members,
+.activity {
     gap: 0px;
 }
 
-.members .members-container:last-child, .activity .members-container:last-child {
+.members-container:last-child {
     border: none;
     padding: 16px 0px 0px;
 }
@@ -294,13 +309,17 @@ li {
 
 /* === Message form === */
 
-.widget-container, .switches {
+.widget-container, 
+.switches, 
+.social-containers {
     display: flex;
     flex-direction: column;
     gap: 16px;
 }
 
-#userField, #messageField, #timezone {
+#userField, 
+#messageField, 
+#timezone {
     background: #F5F5F5;
     border: 1px #CFCFCF solid;
     border-radius: 5px;
@@ -314,7 +333,8 @@ textarea {
     min-height: 134px;
 }
 
-textarea::placeholder, input::placeholder, #timezone:invalid {
+textarea::placeholder,
+#timezone:invalid {
     color: #CCCCCC;
     font-size: 0.875rem;
 }
@@ -324,7 +344,8 @@ textarea::placeholder, input::placeholder, #timezone:invalid {
 }
 
 /* === Settings === */
-.settings label, .settings-button {
+.settings label, 
+.settings-button {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -372,9 +393,12 @@ label.switch-light.switch-ios::after {
 }
 
 /* =================================
-   Media Queries
+   Media Queries min-width: 768px
 ==================================== */
 @media (min-width: 768px) {
+
+    /* === Grid container === */
+
     .grid-container {
     grid-template-columns: 55px 1fr;
     grid-template-areas:
@@ -382,38 +406,97 @@ label.switch-light.switch-ios::after {
         "navigation main";
     }
 
+    /* === navigation ===*/
+
     .navigation {
         flex-direction: column;
+        justify-content: flex-start;
         align-items: center;
         padding: 20px 0;
         gap: 40px;
     }
 
+    /* === main ===*/
+
     .main {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .traffic, .social {
+    /* === Widgets and Sections === */
+
+    .dashboard, .traffic, .social, .members, .activity, .message, .settings, .alert  {
         grid-column: 1 / span 2;
     }
 
-    .widget-container-full,
+    .daily {
+        grid-column: 1 / span 1;
+    }
+
+    .mobile {
+        grid-column: 2 / span 1;
+    }
+
+    .widget-container-full {
+        width: 90vw;
+    }
+
     .widget-container-half {
-        width: 100%;
-        margin: 0 auto;
+        width: 45vw;
+    }
+
+    .social-containers, .members-container {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 16px;
+    }
+
+    .members-container.recent-activity::after {
+        content: ">";
+        font-size: 1.25rem;
+        color: #7477bf;
+        margin-left: 8px;
+    }
+
+    .members-text {
+        text-align: start;
+        flex: 1;
+    }
+
+    label.switch-light.switch-ios strong {
+     min-width: 172px;
+    }
+
+    label.switch-light.switch-ios {
+        justify-content: flex-start;
+    }
+
+    /* === General styles === */
+
+    body, P, li {
+        font-size: 1rem;
     }
 }
 
+/* =================================
+   Media Queries min-width: 1024px
+==================================== */
 @media (min-width: 1024px) {
-    .main {
-        grid-template-columns: repeat(3, 1fr);
+    .members, .message {
+        grid-column: 1 / span 1;
     }
 
-    .traffic {
-        grid-column: 1 / span 3;
+    .activity, .settings {
+         grid-column: 2 / span 1;
     }
 
-    .social, .members, .message, .settings {
-        grid-column: auto;
+    .members, .message {
+        border-right: 1px #D4D4D4 solid; ;
+    }
+
+    .switches {
+        justify-content: space-between;
+        height: 100%;
     }
 }
