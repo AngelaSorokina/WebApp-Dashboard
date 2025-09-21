@@ -144,12 +144,98 @@ li {
     font-size: 1.3125rem;
 }
 
+.bell {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
 .bell-icon {
     flex: 1;
     width: 22px;
     min-width: 20px;
     height: auto; 
-    fill: white;
+    cursor: pointer;
+    transition: transform .15s ease;
+        fill: white;
+}
+
+.bell-icon:hover { 
+    transform: scale(1.15); 
+}
+
+.bell-dot {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #27c93f;
+    border: 2px solid #7477bf; /* ring to match header color */
+    transform: scale(0);
+    transition: transform .15s ease;
+}
+
+.bell.has-unread .bell-dot { 
+    transform: scale(1); 
+}
+
+/* Popover panel */
+.notif-popover {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 320px;
+    background: #fff;
+    border: 1px solid #e3e3e3;
+    box-shadow: 0 8px 20px rgba(0,0,0,.12);
+    border-radius: 6px;
+    overflow: hidden;
+    display: none;            /* hidden by default */
+    z-index: 1000;
+}
+
+.notif-popover.is-open { 
+    display: block; 
+}
+
+/* Items */
+.notif-item {
+    display: grid;
+    grid-template-columns: 14px 1fr auto;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: .95rem;
+}
+
+.notif-item:last-child { 
+    border-bottom: 0; 
+}
+
+.notif-item .status-dot {
+    width: 10px; height: 10px; border-radius: 50%; background:#27c93f;
+}
+
+.notif-close {
+    background: none; border: 0; cursor: pointer;
+    font-size: 1rem; line-height: 1; color: #777;
+}
+.notif-close:hover { 
+    color: #333; 
+}
+
+.notif-empty {
+  padding: 14px;
+  color: #777;
+  font-size: .95rem;
+}
+
+.notif-item span {
+  color: #000;
+  font-size: 0.95rem;
 }
 
 .member {
@@ -165,10 +251,6 @@ li {
     max-height: 38px;
     min-height: 32px;
     background: #8C8EBF;
-}
-
-#notifications {
-    display: none;
 }
 
 /* === navigation ===*/
@@ -241,14 +323,28 @@ li {
     background-color: #F7F7F7;
 }
 
+.widget-container-full {
+    width: 100%;
+    height: auto;
+}
+
 /* === alert === */
 .alert {
-    padding: 16px 8px;
+    padding: 16px 16px;
     margin: 16px;
     border-radius: 5px;
     background: #7477BF;
     color: #fff;
     font-size: 1rem;
+}
+.alert-banner {
+    display: flex;
+    justify-content: space-between;
+    gap:8px;
+}
+
+.alert-banner-close {
+    cursor: pointer;
 }
 
 /* === traffic === */
@@ -273,7 +369,14 @@ li {
 .traffic-nav li {
     padding: 6px 10px;
     border-radius: 16px;
-    background: #81C98F;
+    background:white;
+    color: #000;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.traffic-nav li.active {
+    background:#81C98F;
     color: white;
 }
 
@@ -328,12 +431,14 @@ li {
 
 /* textarea */
 textarea {
+    width: 100%;
     resize: both;
     overflow: auto;
     min-height: 134px;
 }
 
 textarea::placeholder,
+#userField::placeholder,
 #timezone:invalid {
     color: #CCCCCC;
     font-size: 0.875rem;
@@ -342,6 +447,37 @@ textarea::placeholder,
 #timezone option {
     color: #000;
 }
+
+.autocomplete-box {
+    position: absolute;
+    background: #fff;
+    border: 1px solid #ccc;
+    width: calc(100% - 2px);
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 2000;
+}
+
+.autocomplete-item {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.autocomplete-item:hover {
+  background: #f0f0f0;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 8px;
+  display: none;
+}
+
+.autocomplete-box:empty {
+  display: none;
+}
+
 
 /* === Settings === */
 .settings label, 
@@ -436,8 +572,9 @@ label.switch-light.switch-ios::after {
         grid-column: 2 / span 1;
     }
 
-    .widget-container-full {
-        width: 90vw;
+    .traffic-header {
+        flex-direction:row;
+        justify-content: space-between;
     }
 
     .widget-container-half {
@@ -474,7 +611,8 @@ label.switch-light.switch-ios::after {
 
     /* === General styles === */
 
-    body, P, li {
+    body, P, li, textarea::placeholder,
+    #timezone:invalid {
         font-size: 1rem;
     }
 }
@@ -491,7 +629,7 @@ label.switch-light.switch-ios::after {
          grid-column: 2 / span 1;
     }
 
-    .members, .message {
+    .members, .message, .daily {
         border-right: 1px #D4D4D4 solid; ;
     }
 
