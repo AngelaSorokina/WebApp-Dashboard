@@ -35,10 +35,6 @@ h2 {
     text-transform: uppercase;
 }
 
-P {
-    font-size: 0.875rem;
-}
-
 li {
    font-size: 0.8125rem; 
 }
@@ -94,7 +90,6 @@ li {
 /* === Images === */
 
 .profile-image,
-.member,
 .social-image {
   border-radius: 100%;
   width: 60px;
@@ -240,6 +235,7 @@ li {
 
 .member {
     flex: 1;
+    border-radius: 100%;
     width: 38px;
     min-width: 36px;
     height: auto;
@@ -441,7 +437,6 @@ textarea::placeholder,
 #userField::placeholder,
 #timezone:invalid {
     color: #CCCCCC;
-    font-size: 0.875rem;
 }
 
 #timezone option {
@@ -497,35 +492,35 @@ label.switch-light.switch-ios::after {
 }
 
 .form-field {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 
-  width: 100%;
-  padding: 10px;
-  padding-right: 2.5rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+    width: 100%;
+    padding: 10px;
+    padding-right: 2.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 .select-wrap {
-  position: relative;
-  display: inline-block;
-  width: 100%;
+    position: relative;
+    display: inline-block;
+    width: 100%;
 }
 
 .select-icon {
-  position: absolute;
-  right: 12px;
-  top: 50%; 
-  transform: translateY(-50%);
-  width: 24px;
-  height: 24px;
-  pointer-events: none;
+    position: absolute;
+    right: 12px;
+    top: 50%; 
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
 }
 
 .settings-button > * {
-  flex: 1;
+    flex: 1;
 }
 
 /* =================================
@@ -566,6 +561,7 @@ label.switch-light.switch-ios::after {
 
     .daily {
         grid-column: 1 / span 1;
+        border-right: 1px #D4D4D4 solid;
     }
 
     .mobile {
@@ -611,7 +607,7 @@ label.switch-light.switch-ios::after {
 
     /* === General styles === */
 
-    body, P, li, textarea::placeholder,
+    body, li, textarea::placeholder,
     #timezone:invalid {
         font-size: 1rem;
     }
@@ -629,8 +625,8 @@ label.switch-light.switch-ios::after {
          grid-column: 2 / span 1;
     }
 
-    .members, .message, .daily {
-        border-right: 1px #D4D4D4 solid; ;
+    .members, .message {
+        border-right: 1px #D4D4D4 solid;
     }
 
     .switches {

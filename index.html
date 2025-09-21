@@ -47,16 +47,16 @@
 
     <!-- Sidebar navigation -->
     <nav class="navigation">
-        <a href="#dashboard">
+        <a href="#dashboard" aria-label="Dashboard">
             <img src="svgs/home.svg" alt="Home">
         </a>
-        <a href="#traffic">
+        <a href="#traffic" aria-label="Traffic">
             <img src="svgs/bar-chart.svg" alt="Bar-chart">
         </a>
-        <a href="#members">
+        <a href="#members" aria-label="Members">
             <img src="svgs/members.svg" alt="Members">
         </a>
-        <a href="#settings">
+        <a href="#settings" aria-label="Settings">
             <img src="svgs/settings.svg" alt="settings">
         </a>
     </nav>
@@ -123,7 +123,7 @@
                 
                     <div class="social-text">
                         <p>Facebook</p>
-                        <p class="number" >10,320</p>
+                        <p class="number">10,320</p>
                     </div>
                 </div>
 
@@ -137,7 +137,7 @@
                 
                     <div class="social-text">
                         <p>Instagram</p>
-                        <p class="number" >16,445</p>
+                        <p class="number">16,445</p>
                     </div>
                 </div>
 
@@ -151,7 +151,7 @@
                 
                     <div class="social-text">
                         <p>Twitter</p>
-                        <p class="number" >22,189</p>
+                        <p class="number">22,189</p>
                     </div>
                 </div>
             </div>
@@ -307,13 +307,13 @@
 
                 <!-- Save / Cancel buttons -->
                 <div class="settings-button" >
-                    <button class="button-primary" id="save">Save</button>
-                    <button class="button-disabled" id="cancel">Cancel</button>
+                    <button type="button" class="button-primary" id="save">Save</button>
+                    <button type="button" class="button-disabled" id="cancel">Cancel</button>
                 </div>
             </div>
         </section>
 
     </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script type="text/javascript" src="dashboard.js"></script>
+<script src="dashboard.js"></script>
 </body>

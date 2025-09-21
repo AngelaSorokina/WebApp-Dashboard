@@ -54,7 +54,6 @@ let trafficData = {
 };
 
 let trafficOptions = {
-backgroundColor: 'rgba(112, 104, 201, .5)',
 fill: true,
 aspectRatio: 2.5,
 animation: {
@@ -86,22 +85,15 @@ trafficNav.forEach(link => {
 
     e.target.classList.add("active");
 
-    let newData;
-    if (e.target.textContent === "Hourly") {
-      newData = [750, 1250, 1000, 2000, 1500, 1750, 1250, 1850, 2250, 1500,
-        2500];
-    } else if (e.target.textContent === "Daily") {
-      newData = [500, 350, 750, 600, 900, 700, 1200, 900, 1600, 1300,
-        1700];
-    } else if (e.target.textContent === "Weekly") {
-      newData = [600, 900, 500, 1600, 700, 1700, 950, 1200, 800, 1600,
-        1400];
-    } else if (e.target.textContent === "Monthly") {
-      newData = [100, 500, 200, 1100, 1800, 1500, 1300, 1600, 2200, 2000,
-        2450];
-    }
+    const trafficDatasets = {
+    Hourly: [750, 1250, 1000, 2000, 1500, 1750, 1250, 1850, 2250, 1500, 2500],
+    Daily: [500, 350, 750, 600, 900, 700, 1200, 900, 1600, 1300, 1700],
+    Weekly: [600, 900, 500, 1600, 700, 1700, 950, 1200, 800, 1600, 1400],
+    Monthly: [100, 500, 200, 1100, 1800, 1500, 1300, 1600, 2200, 2000, 2450]
+    };
 
-    trafficChart.data.datasets[0].data = newData;
+    const period = e.target.textContent;
+    trafficChart.data.datasets[0].data = trafficDatasets[period];
     trafficChart.update();
   });
 });
@@ -160,7 +152,9 @@ const mobileOptions = {
         position: 'right',
             labels: {
             boxWidth: 20,
-            fontStyle: 'bold'
+            font: {
+              weight: 'bold'
+            }
             }
         }
     }
@@ -239,12 +233,7 @@ notifPanel.addEventListener('click', (e) => {
   renderNotifications();
 });
 
-/** Optional: close popover when clicking outside */
-document.addEventListener('click', (e) => {
-  if (!bellWrap.contains(e.target)) {
-    notifPanel.classList.remove('is-open');
-  }
-});
+
 
 
 // ===== Autocomplete for User Search =====
@@ -278,8 +267,15 @@ user.addEventListener("input", () => {
   });
 });
 
-// Close tips when clicking outside
+/** Close popovers (notifications + autocomplete) when clicking outside */
+
 document.addEventListener("click", (e) => {
+  // Close notifications if clicked outside the bell
+  if (!bellWrap.contains(e.target)) {
+    notifPanel.classList.remove("is-open");
+  }
+
+  // Close autocomplete tooltips if clicked outside
   if (!autocompleteBox.contains(e.target) && e.target !== user) {
     autocompleteBox.innerHTML = "";
   }

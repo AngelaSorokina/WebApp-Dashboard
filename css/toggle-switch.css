@@ -336,7 +336,7 @@
   }
   .switch-ios.switch-light a {
     left: 0;
-    top: 0;
+    top: 0.04rem;
     width: 26px;
     height: 26px;
     margin: 3px;
@@ -374,7 +374,7 @@
   .switch-ios.switch-light input:checked ~ span a {
     left: 100%;
     border: 2px #C1C1C1 solid;
-    margin-left: -2em;
+    margin-left: -1.93em;
   }
   .switch-ios.switch-light input:checked ~ span {
     border: 2px #C1C1C1 solid;
